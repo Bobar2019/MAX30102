@@ -155,24 +155,19 @@ class MAX30102 {
   sense_struct sense;
 
 };
+namespace max30102 {  // Début du namespace
+
 class MAX30102Sensor : public esphome::PollingComponent {
  public:
-  MAX30102Sensor() : esphome::PollingComponent(1000) {}  // Mise à jour toutes les 1s
+  MAX30102Sensor() : esphome::PollingComponent(1000) {}
 
   void setup() override {
-    Serial.begin(115200);
-    Serial.println("MAX30102 setup...");
+    ESP_LOGD("MAX30102", "Capteur MAX30102 initialisé !");
   }
 
   void update() override {
-    Serial.println("MAX30102 update...");
-  }
-
-  float get_heart_rate_sensor() {
-    return 75.0;  // Valeur de test
-  }
-
-  float get_spo2_sensor() {
-    return 98.0;  // Valeur de test
+    ESP_LOGD("MAX30102", "Mise à jour des données...");
   }
 };
+
+}  // Fin du namespace max30102
