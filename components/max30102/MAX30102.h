@@ -155,9 +155,12 @@ class MAX30102 {
   sense_struct sense;
 
 };
-namespace max30102 {  // Début du namespace
+#include "esphome/components/sensor/sensor.h"
+#include "esphome/core/component.h"
 
-class MAX30102Sensor : public esphome::PollingComponent {
+namespace max30102 {
+
+class MAX30102Sensor : public esphome::PollingComponent, public esphome::sensor::Sensor {
  public:
   MAX30102Sensor() : esphome::PollingComponent(1000) {}
 
@@ -166,8 +169,12 @@ class MAX30102Sensor : public esphome::PollingComponent {
   }
 
   void update() override {
-    ESP_LOGD("MAX30102", "Mise à jour des données...");
+    float heart_rate = 75.0;  // Simulé
+    float spo2 = 98.0;        // Simulé
+
+    this->publish_state(heart_rate);  // Mise à jour du capteur BPM
   }
 };
+
 
 }  // Fin du namespace max30102
