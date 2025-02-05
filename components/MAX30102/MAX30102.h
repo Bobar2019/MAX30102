@@ -154,3 +154,24 @@ class MAX30102 {
   sense_struct sense;
 
 };
+class MAX30102Sensor : public PollingComponent {
+ public:
+  MAX30102Sensor() : PollingComponent(1000) {}  // Mise à jour toutes les 1s
+
+  void setup() override {
+    Serial.begin(115200);
+    Serial.println("MAX30102 setup...");
+  }
+
+  void update() override {
+    Serial.println("MAX30102 update...");
+  }
+
+  float get_heart_rate_sensor() {
+    return 75.0;  // Valeur de test
+  }
+
+  float get_spo2_sensor() {
+    return 98.0;  // Valeur de test
+  }
+};
