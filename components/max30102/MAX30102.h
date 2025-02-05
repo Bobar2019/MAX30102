@@ -18,6 +18,7 @@
 #endif
 
 #include <Wire.h>
+#include "esphome/core/component.h"
 
 #define MAX30102_ADDRESS          0x57 //7-bit I2C Address
 //Note that MAX30102 has the same I2C address and Part ID
@@ -154,9 +155,9 @@ class MAX30102 {
   sense_struct sense;
 
 };
-class MAX30102Sensor : public PollingComponent {
+class MAX30102Sensor : public esphome::PollingComponent {
  public:
-  MAX30102Sensor() : PollingComponent(1000) {}  // Mise à jour toutes les 1s
+  MAX30102Sensor() : esphome::PollingComponent(1000) {}  // Mise à jour toutes les 1s
 
   void setup() override {
     Serial.begin(115200);
