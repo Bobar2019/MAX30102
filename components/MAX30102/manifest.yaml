@@ -1,0 +1,8 @@
+name: "max30102"
+version: "1.0"
+requirements: []
+files:
+  - "MAX30102.h"
+  - "MAX30102.cpp"
+  - "sensor.py"
+
